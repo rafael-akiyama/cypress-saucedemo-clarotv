@@ -9,8 +9,9 @@ describe('SauceDemo - Fluxo de Login e Checkout', () => {
   const inventoryPage = new InventoryPage()
   const cartPage = new CartPage()
   const checkoutPage = new CheckoutPage()
+  
 
-  beforeEach(() => {
+  it('Deve realizar o login com sucesso',() => {
     loginPage.visit()
     loginPage.realizarLogin('standard_user', 'secret_sauce')
     inventoryPage.validarPagina()
@@ -18,6 +19,8 @@ describe('SauceDemo - Fluxo de Login e Checkout', () => {
 
   it('Deve realizar o checkout com sucesso', () => {
 
+    loginPage.visit()
+    loginPage.realizarLogin('standard_user', 'secret_sauce')
     inventoryPage.adicionarProdutoAoCarrinho()
     inventoryPage.irParaCarrinho()
 
