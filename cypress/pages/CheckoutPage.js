@@ -1,17 +1,19 @@
+
+const el = require('./elements').ELEMENTS;
 class CheckoutPage {
 
   preencherDados(nome, sobrenome, cep) {
-    cy.get('[data-test="firstName"]').type(nome)
-    cy.get('[data-test="lastName"]').type(sobrenome)
-    cy.get('[data-test="postalCode"]').type(cep)
+    cy.get(el.nomeCheckout).type(nome)
+    cy.get(el.sobrenomeCheckout).type(sobrenome)
+    cy.get(el.cepCheckout).type(cep)
   }
 
   continuar() {
-    cy.get('[data-test="continue"]').click()
+    cy.get(el.botaoContinuarCheckout).click()
   }
 
   finalizar() {
-    cy.get('[data-test="finish"]').click()
+    cy.get(el.botaoFinalizarCheckout).click()
   }
 
   validarSucesso() {

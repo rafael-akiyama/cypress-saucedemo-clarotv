@@ -1,20 +1,22 @@
+
+const el = require('./elements').ELEMENTS;
 class LoginPage {
 
   visit() {
-    cy.visit('https://www.saucedemo.com/')
+    cy.visit(el.site)
     cy.screenshot('1.validacaoPagInicial')
   }
 
   preencherUsuario(usuario) {
-    cy.get('[data-test="username"]').type(usuario)
+    cy.get(el.campoUsuarioLogin).type(usuario)
   }
 
   preencherSenha(senha) {
-    cy.get('[data-test="password"]').type(senha)
+    cy.get(el.campoSenhaLogin).type(senha)
   }
 
   clicarLogin() {
-    cy.get('[data-test="login-button"]').click()
+    cy.get(el.botaoLogin).click()
   }
 
   realizarLogin(usuario, senha) {

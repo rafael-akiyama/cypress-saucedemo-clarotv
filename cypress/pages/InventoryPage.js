@@ -1,3 +1,5 @@
+
+const el = require('./elements').ELEMENTS;
 class InventoryPage {
 
   validarPagina() {
@@ -6,11 +8,11 @@ class InventoryPage {
   }
 
   adicionarProdutoAoCarrinho() {
-    cy.get('[data-test="add-to-cart-sauce-labs-backpack"]').click()
+    cy.get(el.botaoAdicionarMochila).click()
   }
 
   irParaCarrinho() {
-    cy.get('.shopping_cart_link').click()
+    cy.get(el.botaoCarrinho).click()
   }
 }
 
