@@ -1,3 +1,6 @@
+
+const el = require('./elements').ELEMENTS;
+
 class CartPage {
 
   validarPagina() {
@@ -5,7 +8,7 @@ class CartPage {
   }
 
   clicarCheckout() {
-    cy.get('[data-test="checkout"]').click()
+    cy.get(el.botaoCheckout).click()
   }
 }
 
