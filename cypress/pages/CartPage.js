@@ -1,5 +1,5 @@
 
-const el = require('./elements').ELEMENTS;
+import { ELEMENTS as el } from "./elements"
 
 class CartPage {
 

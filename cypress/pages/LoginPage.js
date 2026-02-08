@@ -1,10 +1,11 @@
 
-const el = require('./elements').ELEMENTS;
+import { ELEMENTS as el } from "./elements"
+import { CREDENTIALS } from "../support/constants"
+
 class LoginPage {
 
   visit() {
     cy.visit(el.site)
-    cy.screenshot('1.validacaoPagInicial')
   }
 
   preencherUsuario(usuario) {
@@ -19,11 +20,11 @@ class LoginPage {
     cy.get(el.botaoLogin).click()
   }
 
-  realizarLogin(usuario, senha) {
-    this.preencherUsuario(usuario)
-    this.preencherSenha(senha)
+  realizarLogin() {
+    const { username, password } = CREDENTIALS.VALID_USER
+    this.preencherUsuario(username)
+    this.preencherSenha(password)
     this.clicarLogin()
-    cy.screenshot('2.validacaoLogado');
   }
 }
 

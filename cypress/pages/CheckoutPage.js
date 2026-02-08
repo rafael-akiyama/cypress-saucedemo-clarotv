@@ -1,5 +1,5 @@
 
-const el = require('./elements').ELEMENTS;
+import { ELEMENTS as el } from "./elements"
 class CheckoutPage {
 
   preencherDados(nome, sobrenome, cep) {
@@ -19,7 +19,7 @@ class CheckoutPage {
   validarSucesso() {
     cy.get('.complete-header')
       .should('contain.text', 'Thank you for your order')
-      cy.screenshot('3.validacaoCheckoutComplete')
+      cy.screenshot('2.validacaoCheckoutCompleto')
   }
 }
 
