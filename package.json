@@ -13,7 +13,8 @@
     "test:feature:report": "cypress run --spec 'cypress/e2e/features/*.feature' && node generate-reports.js",
     "report:generate": "node generate-reports.js",
     "report:open:cucumber": "start cypress/reports/cucumber-html/index.html",
-    "report:open:mochawesome": "start cypress/reports/mochawesome/mochawesome-bundle.html"
+    "report:open:mochawesome": "start cypress/reports/mochawesome/mochawesome-bundle.html",
+    "clean:reports": "rimraf cypress/reports cypress/screenshots cypress/videos"
   },
   "keywords": [],
   "author": "",
@@ -24,6 +25,7 @@
     "cypress": "^15.10.0",
     "cypress-mochawesome-reporter": "^4.0.2",
     "mochawesome": "^7.1.4",
-    "multiple-cucumber-html-reporter": "^3.9.3"
+    "multiple-cucumber-html-reporter": "^3.9.3",
+    "rimraf": "^6.1.2"
   }
 }
