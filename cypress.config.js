@@ -32,6 +32,23 @@ module.exports = defineConfig({
       require('cypress-mochawesome-reporter/plugin')(on)
       await addCucumberPreprocessorPlugin(on, config)
 
+      on('task', {
+        log(message) {
+          console.log(message)
+          return null
+        },
+        logStep({ keyword, text }) {
+          let icon = '⏩';
+          if (keyword === 'Dado' || keyword === 'Given') icon = '📌';
+          else if (keyword === 'Quando' || keyword === 'When') icon = '⚡';
+          else if (keyword === ' Então' || keyword === 'Then') icon = '✅';
+          else if (keyword === 'E' || keyword === 'And') icon = '➕';
+          
+          console.log(`  ${icon} ${keyword} ${text}`)
+          return null
+        }
+      })
+
       on(
         "file:preprocessor",
         createBundler({
