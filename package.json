@@ -8,7 +8,12 @@
     "test:open": "cypress open",
     "test:video": "cypress run --record=false --video=true",
     "test:feature": "cypress run --spec 'cypress/e2e/features/*.feature'",
-    "test:feature:video": "cypress run --spec 'cypress/e2e/features/*.feature' --video=true"
+    "test:feature:video": "cypress run --spec 'cypress/e2e/features/*.feature' --video=true",
+    "test:report": "cypress run && node generate-reports.js",
+    "test:feature:report": "cypress run --spec 'cypress/e2e/features/*.feature' && node generate-reports.js",
+    "report:generate": "node generate-reports.js",
+    "report:open:cucumber": "start cypress/reports/cucumber-html/index.html",
+    "report:open:mochawesome": "start cypress/reports/mochawesome/mochawesome-bundle.html"
   },
   "keywords": [],
   "author": "",
@@ -18,6 +23,7 @@
     "@bahmutov/cypress-esbuild-preprocessor": "^2.2.8",
     "cypress": "^15.10.0",
     "cypress-mochawesome-reporter": "^4.0.2",
-    "mochawesome": "^7.1.4"
+    "mochawesome": "^7.1.4",
+    "multiple-cucumber-html-reporter": "^3.9.3"
   }
 }

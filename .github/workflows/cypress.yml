@@ -5,6 +5,7 @@ on:
     branches: [ "main" ]
   pull_request:
     branches: [ "main" ]
+  workflow_dispatch:
 
 jobs:
   cypress-run:
@@ -14,10 +15,41 @@ jobs:
       - name: Checkout do código
         uses: actions/checkout@v4
 
-      - name: Cypress Run
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: 'npm'
+
+      - name: Instalar dependências
+        run: npm ci
+
+      - name: Executar testes Cypress
         uses: cypress-io/github-action@v6
         with:
           browser: chrome
+          spec: cypress/e2e/features/*.feature
+        continue-on-error: true
+
+      - name: Gerar relatórios
+        if: always()
+        run: npm run report:generate
+
+      - name: Upload relatório Cucumber HTML
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: cucumber-report
+          path: cypress/reports/cucumber-html
+          retention-days: 30
+
+      - name: Upload relatório Mochawesome
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: mochawesome-report
+          path: cypress/reports/mochawesome
+          retention-days: 30
 
       - name: Upload screenshots
         if: always()
@@ -25,6 +57,7 @@ jobs:
         with:
           name: cypress-screenshots
           path: cypress/screenshots
+          retention-days: 7
 
       - name: Upload vídeos
         if: always()
@@ -32,3 +65,4 @@ jobs:
         with:
           name: cypress-videos
           path: cypress/videos
+          retention-days: 7
