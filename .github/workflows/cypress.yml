@@ -1,4 +1,4 @@
-name: Cypress E2E - SauceDemo (BDD PT-BR)
+name: cypress-saucedemo-clarotv
 
 on:
   push:
