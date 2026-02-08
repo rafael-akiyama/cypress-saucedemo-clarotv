@@ -1,6 +1,8 @@
 name: cypress-saucedemo-clarotv
 
 on:
+  push:
+    branches: [ "main" ]
   workflow_dispatch:
 
 jobs:
