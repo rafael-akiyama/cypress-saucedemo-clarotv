@@ -19,7 +19,7 @@ ${colors.reset}`);
 try {
   // 1. Gerar relatório Cucumber HTML
   console.log(`${colors.yellow}📊 Gerando relatório Cucumber BDD...${colors.reset}`);
-  execSync('node cypress/reports/cucumber-report.js', { stdio: 'inherit' });
+  execSync('node cucumber-report.js', { stdio: 'inherit' });
 
   // 2. Mesclar relatórios Mochawesome
   console.log(`\n${colors.yellow}📊 Consolidando relatórios Mochawesome...${colors.reset}`);
