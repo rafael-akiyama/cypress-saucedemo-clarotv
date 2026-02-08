@@ -1,4 +1,4 @@
-name: Cypress E2E - SauceDemo
+name: Cypress E2E - SauceDemo (BDD PT-BR)
 
 on:
   push:
@@ -34,6 +34,23 @@ jobs:
       - name: Gerar relatórios
         if: always()
         run: npm run report:generate
+
+      - name: Criar resumo dos testes BDD
+        if: always()
+        run: |
+          echo "## 📊 Resultados dos Testes E2E - BDD (Dado/Quando/Então)" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "### ✅ Testes executados com sintaxe BDD em Português" >> $GITHUB_STEP_SUMMARY
+          echo "- 📌 **Dado** - Steps de preparação" >> $GITHUB_STEP_SUMMARY
+          echo "- ⚡ **Quando** - Steps de ação" >> $GITHUB_STEP_SUMMARY
+          echo "- ✅ **Então** - Steps de verificação" >> $GITHUB_STEP_SUMMARY
+          echo "- ➕ **E** - Steps adicionais" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "### 📁 Relatórios disponíveis nos artefatos:" >> $GITHUB_STEP_SUMMARY
+          echo "- 🥒 Relatório Cucumber BDD (HTML)" >> $GITHUB_STEP_SUMMARY
+          echo "- 📊 Relatório Mochawesome (HTML)" >> $GITHUB_STEP_SUMMARY
+          echo "- 📸 Screenshots (se houver falhas)" >> $GITHUB_STEP_SUMMARY
+          echo "- 🎥 Vídeos das execuções" >> $GITHUB_STEP_SUMMARY
 
       - name: Upload relatório Cucumber HTML
         if: always()
